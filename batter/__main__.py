@@ -16,23 +16,36 @@ def main(screen):
     # create the cast {key: tag, value: list}
     cast = {}
 
-    x = int(constants.MAX_X / 2)
-    y = int(constants.MAX_Y - 1)
+    marquee = Actor()
+    marquee.set_text("")
+    marquee.set_position(Point(1, 0))
+    cast["marquee"] = [marquee]
+
+    x = int(constants.MAX_X /2 - 6)
+    y = int( 17)
     position = Point(x, y)
-    paddle = Actor()
-    paddle.set_text("===========")
-    paddle.set_position(position)
-    cast["paddle"] = [paddle]
-
-    cast["brick"] = []
-    for x in range(5, 75):
-        for y in range(2, 6):
+    robot = Actor()
+    robot.set_text("===========")
+    robot.set_position(position)
+    cast["robot"] = [robot]
+    #constants.ARTIFACTS
+    artifacts = []
+    for a in range (4):
+        for n in range(70):
+            text = "*"
+            description = "*"
+            x = 10 + n
+            y = 2 + a
             position = Point(x, y)
-            brick = Actor()
-            brick.set_text("*")
-            brick.set_position(position)
-            cast["brick"].append(brick)
+            artifact = Actor()
+            artifact.set_description(description)
+            artifact.set_text(text)
+            artifact.set_position(position)
+            artifacts.append(artifact)
+            n = n + 1
+        a = a + 1
 
+    cast["artifact"] = artifacts
     x = int(constants.MAX_X / 2)
     y = int(constants.MAX_Y / 2)
     position = Point(x, y)
@@ -42,7 +55,7 @@ def main(screen):
     ball.set_position(position)
     ball.set_velocity(velocity)
     cast["ball"] = [ball]
-    
+
     # create the script {key: tag, value: list}
     script = {}
 
@@ -50,11 +63,11 @@ def main(screen):
     output_service = OutputService(screen)
     control_actors_action = ControlActorsAction(input_service)
     move_actors_action = MoveActorsAction()
-    handle_collisions_acition = HandleCollisionsAction()
+    handle_collisions_action = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)
-    
+
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_acition]
+    script["update"] = [move_actors_action, handle_collisions_action]
     script["output"] = [draw_actors_action]
 
     # start the game

@@ -17,9 +17,9 @@ class HandleCollisionsAction(Action):
         """
         marquee = cast["marquee"][0] # there's only one
         robot = cast["robot"][0] # there's only one
-        artifacts = cast["artifact"]
+        ball = cast["ball"]
         marquee.set_text("")
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                description = artifact.get_description()
-                marquee.set_text(description) 
+        for robot in ball:
+            if robot.get_position().equals(robot.get_position()):
+                description = robot.get_description()
+                marquee.set_text("") 

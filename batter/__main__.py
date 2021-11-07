@@ -28,24 +28,16 @@ def main(screen):
     robot.set_text("===========")
     robot.set_position(position)
     cast["robot"] = [robot]
-    #constants.ARTIFACTS
-    artifacts = []
-    for a in range (4):
-        for n in range(70):
-            text = "*"
-            description = "*"
-            x = 10 + n
-            y = 2 + a
-            position = Point(x, y)
-            artifact = Actor()
-            artifact.set_description(description)
-            artifact.set_text(text)
-            artifact.set_position(position)
-            artifacts.append(artifact)
-            n = n + 1
-        a = a + 1
 
-    cast["artifact"] = artifacts
+    cast["brick"] = []
+    for x in range(5, 75):
+        for y in range(2, 6):
+            position = Point(x, y)
+            brick = Actor()
+            brick.set_text("*")
+            brick.set_position(position)
+            cast["brick"].append(brick)
+
     x = int(constants.MAX_X / 2)
     y = int(constants.MAX_Y / 2)
     position = Point(x, y)

@@ -15,11 +15,12 @@ def main(screen):
 
     # create the cast {key: tag, value: list}
     cast = {}
-
-    marquee = Actor()
-    marquee.set_text("")
-    marquee.set_position(Point(1, 0))
-    cast["marquee"] = [marquee]
+    
+    
+    paddle = Actor()
+    paddle.set_text("")
+    paddle.set_position(Point(1, 0))
+    cast["paddle"] = [paddle]
 
     x = int(constants.MAX_X /2 - 6)
     y = int( 17)
@@ -38,8 +39,8 @@ def main(screen):
             brick.set_position(position)
             cast["brick"].append(brick)
 
-    x = int(constants.MAX_X / 2)
-    y = int(constants.MAX_Y / 2)
+    x = int(50)
+    y = int(50)
     position = Point(x, y)
     velocity = Point(1, -1)
     ball = Actor()

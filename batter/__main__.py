@@ -33,21 +33,26 @@ def main(screen):
     cast["brick"] = []
     for x in range(5, 75):
         for y in range(2, 6):
-            position = Point(x, y)
+            position_brick = Point(x, y)
             brick = Actor()
             brick.set_text("*")
-            brick.set_position(position)
+            brick.set_position(position_brick)
             cast["brick"].append(brick)
 
     x = int(50)
     y = int(50)
     position = Point(x, y)
-    velocity = Point(1, -1)
+    if position_brick != position:
+        velocity = Point(1, -1)
+    else:
+        velocity = Point(-1, 1)
     ball = Actor()
     ball.set_text("@")
     ball.set_position(position)
+    
     ball.set_velocity(velocity)
     cast["ball"] = [ball]
+
 
     # create the script {key: tag, value: list}
     script = {}

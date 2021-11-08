@@ -24,6 +24,7 @@ class OutputService:
         """Clears the Asciimatics buffer for the next rendering.""" 
         self._screen.clear_buffer(7, 0, 0)
         self._screen.print_at("-" * constants.MAX_X, 0, 0, 3 )
+        self._screen.print_at("Welcome to Batter" , 32, 0, 2 )
         self._screen.print_at("--------------------press x to exit--------------------", 11, 20, 3)
         
     def draw_actor(self, actor):
